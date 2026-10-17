@@ -172,6 +172,7 @@ input:focus,select:focus{outline:none;border-color:var(--n500)}
 .msg{margin-top:13px;font-size:13.5px;min-height:19px}
 .msg.ok{color:var(--emerald)}
 .msg.err{color:#f87171}
+.opt{text-transform:none;letter-spacing:0;font-weight:500}
 .msg a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .privacy{margin-top:14px;font-size:11.5px;color:var(--n500);line-height:1.55}
 
@@ -338,15 +339,15 @@ footer a{color:var(--n300);text-decoration:none}
     </div>
     <div class="field">
       <label for="tel">Telefono</label>
-      <input id="tel" type="tel" placeholder="333 1234567" autocomplete="tel">
+      <input id="tel" type="tel" required placeholder="333 1234567" autocomplete="tel">
     </div>
     <div class="field">
-      <label for="mail">Email</label>
+      <label for="mail">Email <span class="opt">(facoltativa)</span></label>
       <input id="mail" type="email" placeholder="mario@esempio.it" autocomplete="email">
     </div>
     <div class="field">
       <label for="int">Cosa ti interessa</label>
-      <select id="int">
+      <select id="int" required>
         <option value="">Scegli un'opzione</option>
         <option>Founding trimestrale — 210&euro;</option>
         <option>Founding semestrale — 390&euro;</option>
@@ -456,9 +457,13 @@ $('form').addEventListener('submit', async (ev) => {
     data: new Date().toLocaleString('it-IT')
   };
 
-  if (!dati.nome) return show('Manca il nome.', 'err');
-  if (!dati.telefono && !dati.email) return show('Lasciaci almeno un telefono o una email.', 'err');
-  if (dati.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(dati.email)) return show("Controlla l'email.", 'err');
+  const errore = (testo, id) => { show(testo, 'err'); $(id).focus(); };
+  const cifre = dati.telefono.replace(/\D/g, '');
+  if (!dati.nome) return errore('Manca il nome.', 'nome');
+  if (!dati.telefono) return errore('Manca il telefono.', 'tel');
+  if (cifre.length < 8 || cifre.length > 13) return errore('Controlla il numero di telefono.', 'tel');
+  if (dati.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(dati.email)) return errore("Controlla l'email.", 'mail');
+  if (!dati.interesse) return errore('Scegli cosa ti interessa.', 'int');
 
   if (!ENDPOINT) return show("Form non ancora collegato (manca l'ENDPOINT).", 'err');
 
