@@ -172,6 +172,7 @@ input:focus,select:focus{outline:none;border-color:var(--n500)}
 .msg{margin-top:13px;font-size:13.5px;min-height:19px}
 .msg.ok{color:var(--emerald)}
 .msg.err{color:#f87171}
+.msg a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .privacy{margin-top:14px;font-size:11.5px;color:var(--n500);line-height:1.55}
 
 /* ---------- LINK ---------- */
@@ -330,9 +331,10 @@ footer a{color:var(--n300);text-decoration:none}
     <h2>Voglio esserci</h2>
     <p class="body" style="margin-bottom:22px">Lasciaci un contatto: ti richiamiamo noi per confermare il posto e completare l'iscrizione.</p>
 
+    <form id="form" novalidate>
     <div class="field">
       <label for="nome">Nome e cognome</label>
-      <input id="nome" type="text" placeholder="Mario Rossi" autocomplete="name">
+      <input id="nome" type="text" required placeholder="Mario Rossi" autocomplete="name">
     </div>
     <div class="field">
       <label for="tel">Telefono</label>
@@ -354,7 +356,8 @@ footer a{color:var(--n300);text-decoration:none}
       </select>
     </div>
 
-    <button class="btn" id="send">Mandaci il contatto</button>
+    <button class="btn" id="send" type="submit">Mandaci il contatto</button>
+    </form>
     <p class="msg" id="msg" role="status" aria-live="polite"></p>
     <p class="privacy">Usiamo i tuoi dati solo per ricontattarti su PEAK. Niente newsletter, niente giri strani.</p>
   </section>
@@ -441,7 +444,10 @@ function show(text, kind) {
   msg.className = 'msg ' + (kind || '');
 }
 
-btn.addEventListener('click', async () => {
+const ERRORE_INVIO = 'Non siamo riusciti a salvare il contatto. Riprova tra poco o <a href="https://wa.me/393937652236" target="_blank" rel="noopener">scrivici su WhatsApp</a>.';
+
+$('form').addEventListener('submit', async (ev) => {
+  ev.preventDefault();
   const dati = {
     nome: $('nome').value.trim(),
     telefono: $('tel').value.trim(),
@@ -459,18 +465,28 @@ btn.addEventListener('click', async () => {
   btn.disabled = true;
   show('Invio…');
 
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 15000);
+
   try {
-    await fetch(ENDPOINT, {
+    const res = await fetch(ENDPOINT, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(dati)
+      body: JSON.stringify(dati),
+      signal: ctrl.signal
     });
-    show('Ricevuto. Ti scriviamo presto.', 'ok');
-    ['nome','tel','mail','int'].forEach(id => $(id).value = '');
+    const testo = (await res.text()).trim();
+    let salvato = testo === 'ok'; // risposta del vecchio script
+    try { salvato = salvato || JSON.parse(testo).ok === true; } catch (_) {}
+    if (!res.ok || !salvato) throw new Error('non salvato');
+
+    show('Ricevuto. Ti richiamiamo presto.', 'ok');
+    $('form').reset();
   } catch (e) {
-    show('Qualcosa non ha funzionato. Riprova o scrivici su Instagram.', 'err');
+    show('', 'err');
+    msg.innerHTML = ERRORE_INVIO;
   } finally {
+    clearTimeout(timer);
     btn.disabled = false;
   }
 });
