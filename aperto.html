@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PEAK Functional Fitness · Palestra di functional fitness a Maser (TV)</title>
+<meta name="description" content="Palestra di functional fitness a Maser (TV): classi con coach, open box e app. Prova gratuita su prenotazione.">
+<!-- Versione finale del sito, in preparazione. Le foto in /foto-prova sono generate e vanno sostituite con quelle vere del box. -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/barlow-900.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/fonts/montserrat-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/foto-prova/hero.webp" as="image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"PEAK Functional Fitness","url":"https://peakfunctionalfitness.it/","image":"https://peakfunctionalfitness.it/og.jpg","telephone":"+39 393 765 2236","email":"info.peakfunctionalfitness@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Via Enrico Mattei 18","postalCode":"31010","addressLocality":"Maser","addressRegion":"TV","addressCountry":"IT"},"sameAs":["https://www.instagram.com/peakfunctionalfitness/"]}
+</script>
+<style>
+@font-face{font-family:'Barlow';src:url(/fonts/barlow-800.woff) format('woff');font-weight:800;font-display:swap}
+@font-face{font-family:'Barlow';src:url(/fonts/barlow-900.woff) format('woff');font-weight:900;font-display:swap}
+@font-face{font-family:'Montserrat';src:url(/fonts/montserrat-var.woff) format('woff');font-weight:400 700;font-display:swap}
+:root{
+  --fondo:#0a0a0a; --scheda:#171717; --filo:#262626; --grigio-scuro:#525252;
+  --secondario:#a3a3a3; --dettaglio:#8a8a8a; --testo:#e5e5e5; --bianco:#f5f5f5;
+  --gutter:20px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;color-scheme:dark;background:var(--fondo)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--fondo);color:var(--testo);font-family:'Montserrat',system-ui,sans-serif;font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--testo);color:var(--fondo)}
+:focus-visible{outline:2px solid var(--bianco);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.titolo{font-family:'Barlow',sans-serif;font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;color:var(--bianco)}
+h2.titolo{font-size:clamp(34px,8.5vw,64px)}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--secondario);max-width:34em;line-height:1.55}
+section{scroll-margin-top:72px}
+.foto{filter:grayscale(1) contrast(1.08) brightness(.92);object-fit:cover;width:100%;height:100%}
+
+/* ---------- BOTTONI ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .2s ease-out,border-color .2s ease-out,transform .15s ease-out}
+.btn:active{transform:scale(.98)}
+.btn-pieno{background:var(--bianco);color:#000}
+.btn-vuoto{border-color:#5a5a5a;color:var(--bianco);background:transparent}
+@media (hover:hover){.btn-pieno:hover{background:#fff}.btn-vuoto:hover{border-color:var(--bianco)}}
+
+/* ---------- MENU ---------- */
+.menu{position:fixed;inset:0 0 auto;z-index:20;transition:background-color .25s ease-out,border-color .25s ease-out;border-bottom:1px solid transparent}
+.menu.pieno{background:rgba(10,10,10,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:var(--filo)}
+.menu .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+.menu img{width:104px;height:auto}
+.menu nav{display:none}
+.menu nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--secondario);padding:10px 4px}
+.menu nav a:hover{color:var(--bianco)}
+.menu .btn{min-height:42px;padding:0 16px;font-size:13px}
+@media (min-width:900px){.menu nav{display:flex;gap:26px}.menu img{width:124px}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .strato{position:absolute;inset:0;z-index:-2}
+.hero .strato img{object-position:62% center}
+.hero .scuro{filter:grayscale(1) brightness(.32) contrast(1.1)}
+.hero{--w:min(118vw,520px);--h:calc(var(--w) * 150 / 214);--l:calc(50% - var(--w) * .5);--y:calc(var(--h) + 76px)}
+@media (min-width:900px){.hero{--w:min(150vw,1500px);--l:calc(50% - var(--w) * .18);--y:100%}}
+.hero .finestra{position:absolute;inset:0;z-index:-1;
+  clip-path:polygon(calc(var(--l) + var(--w) * .5) calc(var(--y) - var(--h)),calc(var(--l) + var(--w) * .998) var(--y),calc(var(--l) + var(--w) * .806) var(--y),calc(var(--l) + var(--w) * .5) calc(var(--y) - var(--h) * .615),calc(var(--l) + var(--w) * .194) var(--y),calc(var(--l) + var(--w) * .002) var(--y))}
+.hero .finestra img{width:100%;height:100%;object-fit:cover;object-position:62% center;filter:grayscale(1) contrast(1.12) brightness(1.02)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.55) 32%,rgba(10,10,10,0) 60%)}
+.hero .wrap{width:100%;padding-bottom:clamp(40px,8vh,88px);padding-top:120px}
+.hero h1{font-size:clamp(46px,12.5vw,128px)}
+.hero p{margin-top:20px;font-size:clamp(16px,2vw,19px);color:var(--testo);max-width:28em}
+.hero .azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .finestra{animation:apri 1.6s cubic-bezier(.2,.7,.1,1) .2s both}
+  @keyframes apri{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:none}}
+}
+
+/* ---------- MANIFESTO ---------- */
+.manifesto{padding:clamp(72px,12vw,150px) 0}
+.manifesto p{font-family:'Barlow',sans-serif;font-weight:800;font-size:clamp(26px,4.4vw,48px);line-height:1.12;color:var(--bianco);max-width:20em;letter-spacing:-.005em}
+.manifesto p span{color:var(--grigio-scuro)}
+
+/* ---------- PRIMA VOLTA ---------- */
+.prima{padding-bottom:clamp(72px,10vw,130px)}
+.prima .griglia{display:grid;gap:40px}
+.prima figure{aspect-ratio:4/5;border-radius:18px;overflow:hidden}
+.passi{list-style:none;margin-top:34px;counter-reset:p}
+.passi li{counter-increment:p;display:grid;grid-template-columns:52px 1fr;gap:4px 16px;padding:22px 0;border-top:1px solid var(--filo)}
+.passi li:last-child{border-bottom:1px solid var(--filo)}
+.passi li::before{content:counter(p);grid-row:span 2;font-family:'Barlow',sans-serif;font-weight:900;font-size:40px;line-height:1;color:var(--grigio-scuro)}
+.passi b{font-family:'Barlow',sans-serif;font-weight:800;font-size:20px;text-transform:uppercase;color:var(--bianco);letter-spacing:.02em}
+.passi span{color:var(--secondario);font-size:15px}
+@media (min-width:900px){.prima .griglia{grid-template-columns:5fr 6fr;align-items:center;gap:80px}}
+
+/* ---------- DUE MODI ---------- */
+.modi{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo)}
+.modi .coppia{display:grid;gap:44px;margin-top:44px}
+.modo figure{aspect-ratio:3/2;border-radius:18px;overflow:hidden;margin-bottom:22px}
+.modo h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase;color:var(--bianco);line-height:1}
+.modo p{color:var(--secondario);margin-top:10px;max-width:30em}
+.modo ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.modo li{font-size:13px;padding:7px 13px;border:1px solid var(--filo);border-radius:999px;color:var(--testo)}
+@media (min-width:900px){.modi .coppia{grid-template-columns:1fr 1fr;gap:40px}.modo:nth-child(2){margin-top:90px}}
+
+/* ---------- ORARI ---------- */
+.orari{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo)}
+.orari .testa{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px}
+.giorni{display:flex;gap:6px;margin-top:34px;overflow-x:auto;scrollbar-width:none}
+.giorni::-webkit-scrollbar{display:none}
+.giorni button{flex:1 0 auto;min-width:48px;min-height:48px;padding:0 12px;border-radius:12px;border:1px solid var(--filo);background:transparent;color:var(--secondario);font:600 13px 'Montserrat',sans-serif;cursor:pointer}
+.giorni button[aria-selected="true"]{background:var(--bianco);color:#000;border-color:var(--bianco)}
+.tabella{display:grid;gap:0;margin-top:18px}
+.giorno{display:none}
+.giorno.attivo{display:block}
+.giorno h3{display:none}
+.slot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--filo)}
+.slot b{font-family:'Barlow',sans-serif;font-weight:800;font-size:22px;color:var(--bianco);font-variant-numeric:tabular-nums}
+.slot span{font-size:13px;color:var(--secondario)}
+.slot.ob b{font-size:17px;color:var(--testo)}
+.oggi-tag{display:none}
+@media (min-width:900px){
+  .giorni{display:none}
+  .tabella{grid-template-columns:repeat(6,1fr);border-top:1px solid var(--filo);margin-top:40px}
+  .giorno{display:block;padding:20px 14px 24px;border-right:1px solid var(--filo)}
+  .giorno:first-child{padding-left:0}.giorno:last-child{border-right:none}
+  .giorno h3{display:flex;justify-content:space-between;align-items:baseline;font-family:'Barlow',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--secondario);margin-bottom:10px}
+  .giorno.oggi h3{color:var(--bianco)}
+  .oggi-tag{display:inline;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0;text-transform:none;color:#000;background:var(--bianco);padding:2px 8px;border-radius:999px}
+  .slot{padding:9px 0;border-bottom:none;flex-direction:column;align-items:flex-start;gap:0}
+  .slot b{font-size:21px}
+  .slot.ob{margin-top:12px;padding-top:14px;border-top:1px solid var(--filo)}
+}
+.nota-orari{margin-top:22px;font-size:13.5px;color:var(--dettaglio)}
+
+/* ---------- FASCIA ---------- */
+.fascia{position:relative;height:clamp(380px,62vw,640px);overflow:hidden;display:flex;align-items:flex-end}
+.fascia img{position:absolute;inset:0;z-index:-1}
+.fascia::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,10,10,.9),rgba(10,10,10,.1) 60%)}
+.fascia{isolation:isolate}
+.fascia .wrap{width:100%}
+.fascia p{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(30px,6vw,64px);line-height:1;text-transform:uppercase;color:var(--bianco);padding-bottom:clamp(32px,6vw,64px);max-width:13em}
+
+/* ---------- COACH ---------- */
+.staff{padding:clamp(72px,10vw,130px) 0}
+.persone{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;margin-top:40px}
+.persona .ritratto{aspect-ratio:4/5;border-radius:16px;background:var(--scheda);border:1px solid var(--filo);display:flex;align-items:flex-end;justify-content:flex-start;padding:16px;overflow:hidden;position:relative}
+.persona .ritratto svg{position:absolute;right:-14%;bottom:-6%;width:90%;opacity:.07}
+.persona .ritratto small{font-size:11.5px;color:var(--dettaglio)}
+.persona b{display:block;margin-top:14px;font-family:'Barlow',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;color:var(--bianco);line-height:1}
+.persona span{display:block;font-size:13.5px;color:var(--secondario);margin-top:4px}
+@media (min-width:900px){.persone{grid-template-columns:repeat(4,1fr);gap:20px}}
+
+/* ---------- APP ---------- */
+.app{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo);overflow:hidden}
+.app .griglia{display:grid;gap:56px;align-items:center}
+.app ul{list-style:none;margin-top:28px}
+.app li{padding:14px 0;border-top:1px solid var(--filo);color:var(--testo)}
+.app li:last-child{border-bottom:1px solid var(--filo)}
+.app li b{color:var(--bianco);font-weight:600}
+.telefoni{position:relative;display:flex;justify-content:center;gap:0;padding:10px 0 20px}
+.telefono{width:min(46vw,260px);flex:none;border-radius:34px;padding:7px;background:#1c1c1c;border:1px solid #333;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.telefono img{border-radius:28px;width:100%;height:auto}
+.telefono:nth-child(1){transform:translateX(18%) rotate(-4deg) scale(.88);z-index:1;opacity:.85}
+.telefono:nth-child(2){z-index:2}
+.telefono:nth-child(3){transform:translateX(-18%) rotate(4deg) scale(.88);z-index:1;opacity:.85}
+@media (max-width:899px){.telefono:nth-child(1),.telefono:nth-child(3){display:none}.telefono{width:min(72vw,300px)}}
+@media (min-width:900px){.app .griglia{grid-template-columns:5fr 7fr}}
+
+/* ---------- PREZZI ---------- */
+.prezzi{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo)}
+.prezzi .griglia{display:grid;gap:36px}
+.listino{list-style:none}
+.listino li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:22px 0;border-top:1px solid var(--filo)}
+.listino li:last-child{border-bottom:1px solid var(--filo)}
+.listino b{display:block;font-family:'Barlow',sans-serif;font-weight:800;font-size:21px;text-transform:uppercase;color:var(--bianco)}
+.listino small{display:block;font-size:13.5px;color:var(--secondario);margin-top:2px}
+.listino strong{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(28px,5vw,40px);color:var(--bianco);white-space:nowrap;line-height:1}
+.listino em{display:block;font-style:normal;font-size:12.5px;color:var(--dettaglio);text-align:right;margin-top:4px}
+.listino .primo strong{font-size:clamp(28px,5vw,40px)}
+@media (min-width:900px){.prezzi .griglia{grid-template-columns:5fr 7fr;gap:80px}}
+
+/* ---------- FAQ ---------- */
+.faq{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo)}
+.faq .griglia{display:grid;gap:30px}
+.faq details{border-top:1px solid var(--filo)}
+.faq details:last-child{border-bottom:1px solid var(--filo)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:600;font-size:16px;color:var(--bianco)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:14px;height:14px;position:relative;color:var(--dettaglio)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s ease-out}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i::after{transform:rotate(0)}
+.faq details p{color:var(--secondario);padding:0 30px 20px 0;max-width:40em}
+@media (min-width:900px){.faq .griglia{grid-template-columns:5fr 7fr;gap:80px}}
+
+/* ---------- PROVA ---------- */
+.prova{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--filo)}
+.prova .griglia{display:grid;gap:40px}
+.campo{margin-bottom:14px}
+label{display:block;font-size:13px;font-weight:600;color:var(--secondario);margin-bottom:7px}
+label .opt{font-weight:400;color:var(--dettaglio)}
+input,select{width:100%;font-family:inherit;font-size:16px;font-weight:500;padding:14px 16px;background:var(--scheda);color:var(--bianco);border:1px solid var(--filo);border-radius:12px;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--dettaglio) 50%),linear-gradient(135deg,var(--dettaglio) 50%,transparent 50%);background-position:calc(100% - 21px) 23px,calc(100% - 15px) 23px;background-size:6px 6px;background-repeat:no-repeat}
+input::placeholder{color:var(--dettaglio)}
+input:focus,select:focus{outline:none;border-color:var(--secondario)}
+form .btn{width:100%;margin-top:10px}
+.btn[disabled]{opacity:.45;cursor:default}
+.msg{margin-top:13px;font-size:14px;min-height:20px}
+.msg.ok{color:#34d399}.msg.err{color:#f87171}
+.msg a{color:inherit}
+.privacy{margin-top:12px;font-size:12.5px;color:var(--dettaglio)}
+.contatti{list-style:none;margin-top:30px}
+.contatti a{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--filo);text-decoration:none}
+.contatti li:last-child a{border-bottom:1px solid var(--filo)}
+.contatti b{font-weight:600;color:var(--bianco)}
+.contatti span{color:var(--secondario);font-size:14px;text-align:right;overflow-wrap:anywhere}
+@media (hover:hover){.contatti a:hover b{text-decoration:underline;text-underline-offset:3px}}
+@media (min-width:900px){.prova .griglia{grid-template-columns:5fr 6fr;gap:80px}}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--filo);padding:40px 0 56px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end}
+footer img{width:120px;height:auto;margin-bottom:16px}
+footer p{font-size:12.5px;color:var(--dettaglio);line-height:1.8}
+footer a{color:var(--secondario);text-decoration:none}
+
+/* barra fissa su telefono */
+.barra{position:fixed;left:12px;right:12px;bottom:12px;z-index:19;transform:translateY(140%);transition:transform .3s ease-out}
+.barra.su{transform:none}
+.barra .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+@media (min-width:900px){.barra{display:none}}
+@media (prefers-reduced-motion:reduce){.barra,.menu{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="menu" id="menu">
+  <div class="wrap">
+    <a href="#top" aria-label="PEAK Functional Fitness, torna su"><img src="/logo.webp" width="124" height="41" alt="PEAK Functional Fitness"></a>
+    <nav aria-label="Sezioni">
+      <a href="#allenamento">Allenamento</a>
+      <a href="#orari">Orari</a>
+      <a href="#app">App</a>
+      <a href="#prezzi">Prezzi</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <a class="btn btn-pieno" href="#prova">Prova gratis</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="h1">
+    <div class="strato"><img class="foto scuro" src="/foto-prova/hero.webp" alt="" width="1376" height="768" fetchpriority="high"></div>
+    <div class="finestra" aria-hidden="true"><img src="/foto-prova/hero.webp" alt="" width="1376" height="768"></div>
+    <div class="wrap">
+      <h1 class="titolo" id="h1">Il tuo allenamento<br>dura un'ora.<br>PEAK no.</h1>
+      <p>Functional fitness a Maser. Classi con un coach, open box per allenarti da solo, un'app per prenotare tutto.</p>
+      <div class="azioni">
+        <a class="btn btn-pieno" href="#prova">Prova gratis una lezione</a>
+        <a class="btn btn-vuoto" href="#orari">Guarda gli orari</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <div class="wrap">
+      <p>Un'ora, massimo quindici persone, un coach che sa come ti chiami. <span>Forza, ginnastica e lavoro metabolico, adattati a dove sei oggi.</span></p>
+    </div>
+  </section>
+
+  <section class="prima" aria-labelledby="h-prima">
+    <div class="wrap griglia">
+      <figure><img class="foto" src="/foto-prova/coach.webp" alt="Un coach corregge la tecnica di un'atleta durante uno stacco con il kettlebell" width="928" height="1152" loading="lazy"></figure>
+      <div>
+        <h2 class="titolo" id="h-prima">La prima volta</h2>
+        <p class="lead" style="margin-top:18px">Non serve essere già allenati. Serve venire.</p>
+        <ol class="passi">
+          <li><b>Prenoti la prova</b><span>Lasci il numero qui sotto o ci scrivi su WhatsApp. Scegliamo insieme la classe.</span></li>
+          <li><b>Ti alleni con noi</b><span>Arrivi dieci minuti prima. Il coach ti spiega i movimenti e adatta il workout al tuo livello.</span></li>
+          <li><b>Decidi dopo</b><span>Se ti è piaciuto scegli l'abbonamento. Se no, nessun impegno.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="modi" id="allenamento" aria-labelledby="h-modi">
+    <div class="wrap">
+      <h2 class="titolo" id="h-modi">Due modi<br>di allenarti</h2>
+      <div class="coppia">
+        <article class="modo">
+          <figure><img class="foto" src="/foto-prova/hero.webp" alt="Una classe esegue front squat in fila davanti al rack" width="1376" height="768" loading="lazy" style="object-position:70% center"></figure>
+          <h3>Classi</h3>
+          <p>Sessioni di un'ora guidate da un coach, con il workout del giorno. Ogni esercizio ha una versione per ogni livello.</p>
+          <ul><li>60 minuti</li><li>Massimo 15 persone</li><li>RX, Scaled, Open</li></ul>
+        </article>
+        <article class="modo">
+          <figure><img class="foto" src="/foto-prova/openbox.webp" alt="Un atleta si allena da solo al vogatore in sala" width="928" height="1152" loading="lazy" style="object-position:center 60%"></figure>
+          <h3>Open box</h3>
+          <p>La sala è tua per lavorare sul tuo programma, recuperare un workout o allenare un punto debole.</p>
+          <ul><li>400 m² di sala</li><li>Rack da 10 m</li><li>Prenoti dall'app</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="orari" id="orari" aria-labelledby="h-orari">
+    <div class="wrap">
+      <div class="testa">
+        <h2 class="titolo" id="h-orari">Orari</h2>
+        <a class="btn btn-vuoto" href="#prova">Prenota la prova</a>
+      </div>
+      <div class="giorni" role="tablist" aria-label="Giorno della settimana" id="giorni"></div>
+      <div class="tabella" id="tabella"></div>
+      <p class="nota-orari">Le classi si prenotano dall'app fino a 7 giorni prima. Domenica chiuso.</p>
+    </div>
+  </section>
+
+  <div class="fascia" aria-label="La community">
+    <img class="foto" src="/foto-prova/community.webp" alt="Un gruppo di atleti di età diverse si batte il cinque a fine allenamento" width="1376" height="768" loading="lazy">
+    <div class="wrap"><p>Un posto dove vieni volentieri. Per allenarti, ma non solo.</p></div>
+  </div>
+
+  <section class="staff" aria-labelledby="h-staff">
+    <div class="wrap">
+      <h2 class="titolo" id="h-staff">Chi c'è</h2>
+      <p class="lead" style="margin-top:18px">Quattro soci, ruoli diversi. Due coach in sala, un fisioterapista e chi tiene in ordine gestione e amministrazione.</p>
+      <ul class="persone">
+        <li class="persona"><div class="ritratto"><svg viewBox="-107 0 214 150" aria-hidden="true"><polygon fill="#fff" points="0,0 106.5,150 65.5,150 0,57.7 -65.5,150 -106.5,150"/></svg><small>Foto in arrivo</small></div><b>Simone</b><span>Coach</span></li>
+        <li class="persona"><div class="ritratto"><svg viewBox="-107 0 214 150" aria-hidden="true"><polygon fill="#fff" points="0,0 106.5,150 65.5,150 0,57.7 -65.5,150 -106.5,150"/></svg><small>Foto in arrivo</small></div><b>Giulio</b><span>Coach</span></li>
+        <li class="persona"><div class="ritratto"><svg viewBox="-107 0 214 150" aria-hidden="true"><polygon fill="#fff" points="0,0 106.5,150 65.5,150 0,57.7 -65.5,150 -106.5,150"/></svg><small>Foto in arrivo</small></div><b>Alberto</b><span>Fisioterapista</span></li>
+        <li class="persona"><div class="ritratto"><svg viewBox="-107 0 214 150" aria-hidden="true"><polygon fill="#fff" points="0,0 106.5,150 65.5,150 0,57.7 -65.5,150 -106.5,150"/></svg><small>Foto in arrivo</small></div><b>Filippo</b><span>Gestione e amministrazione</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="app" id="app" aria-labelledby="h-app">
+    <div class="wrap griglia">
+      <div>
+        <h2 class="titolo" id="h-app">Tutto<br>dal telefono</h2>
+        <p class="lead" style="margin-top:18px">L'app PEAK è nostra, costruita per questo box. Niente da scaricare dagli store: la apri dal telefono e la aggiungi alla home.</p>
+        <ul>
+          <li><b>Prenoti</b> classi e open box, e disdici fino a 15 minuti prima.</li>
+          <li><b>Vedi il WOD</b> del giorno in tutte le sue versioni.</li>
+          <li><b>Segni i risultati</b> e i massimali, e segui i tuoi progressi.</li>
+          <li><b>Ricevi gli avvisi</b> se si libera un posto o cambia una lezione.</li>
+        </ul>
+      </div>
+      <div class="telefoni" aria-label="Schermate dell'app">
+        <div class="telefono"><img src="/app/prenota.webp" alt="Schermata Prenota: le classi del giorno con i posti occupati" width="780" height="1688" loading="lazy"></div>
+        <div class="telefono"><img src="/app/home.webp" alt="Schermata Home: la prossima lezione, il WOD di oggi e i numeri della settimana" width="780" height="1688" loading="lazy"></div>
+        <div class="telefono"><img src="/app/wod.webp" alt="Schermata WOD: il workout del giorno con le versioni RX, Scaled e Open e la classifica" width="780" height="1688" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prezzi" id="prezzi" aria-labelledby="h-prezzi">
+    <div class="wrap griglia">
+      <div>
+        <h2 class="titolo" id="h-prezzi">Prezzi</h2>
+        <p class="lead" style="margin-top:18px">Prima di scegliere, vieni a provare. Chi si è iscritto come founding member mantiene il suo prezzo anche al rinnovo.</p>
+      </div>
+      <ul class="listino">
+        <li class="primo"><div><b>Lezione di prova</b><small>Una classe con un coach, senza impegno</small></div><strong>Gratis</strong></li>
+        <li><div><b>Primo mese</b><small>Promozione per chi inizia</small></div><strong>50€</strong></li>
+        <li><div><b>Trimestrale</b><small>Tre mesi</small></div><div><strong>230€</strong><em>76,67€ al mese</em></div></li>
+        <li><div><b>Semestrale</b><small>Sei mesi</small></div><div><strong>420€</strong><em>70€ al mese</em></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="h-faq">
+    <div class="wrap griglia">
+      <h2 class="titolo" id="h-faq">Prima<br>di iniziare</h2>
+      <div>
+        <details><summary>Non mi sono mai allenato. Posso iniziare?<i></i></summary><p>Sì. Ogni workout si adatta al tuo livello: carichi, movimenti e volumi li sceglie il coach insieme a te. Si parte dalla tecnica, il resto arriva.</p></details>
+        <details><summary>Ho un infortunio o un dolore. Posso venire?<i></i></summary><p>Parlane con noi prima di iniziare. Tra i fondatori c'è un fisioterapista: sappiamo adattare il lavoro a quello che puoi fare oggi. Per un problema in corso serve prima il parere del tuo medico.</p></details>
+        <details><summary>Che differenza c'è tra classe e open box?<i></i></summary><p>In classe ti alleni in gruppo, con un coach e il workout del giorno. In open box usi la sala in autonomia, con il tuo programma.</p></details>
+        <details><summary>Quante volte a settimana?<i></i></summary><p>Per iniziare bastano due o tre classi. Poi aumenti quando il corpo è pronto, non prima.</p></details>
+        <details><summary>Cosa serve per iscriversi?<i></i></summary><p>Il certificato medico per attività sportiva non agonistica. Per allenarti: abbigliamento comodo, scarpe da allenamento e una borraccia.</p></details>
+        <details><summary>Come prenoto le classi?<i></i></summary><p>Dall'app PEAK. Vedi i posti liberi, prenoti e disdici dal telefono. Niente telefonate, niente liste.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="prova" id="prova" aria-labelledby="h-prova">
+    <div class="wrap griglia">
+      <div id="contatti">
+        <h2 class="titolo" id="h-prova">Prova<br>gratuita</h2>
+        <p class="lead" style="margin-top:18px">Lasciaci un contatto: ti richiamiamo per fissare la lezione di prova.</p>
+        <ul class="contatti">
+          <li><a href="https://wa.me/393937652236" target="_blank" rel="noopener"><b>WhatsApp</b><span>393 765 2236</span></a></li>
+          <li><a href="https://www.instagram.com/peakfunctionalfitness/" target="_blank" rel="noopener"><b>Instagram</b><span>@peakfunctionalfitness</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Via+Enrico+Mattei+18,+31010+Maser+TV" target="_blank" rel="noopener"><b>Dove siamo</b><span>Via Enrico Mattei 18, Maser (TV)</span></a></li>
+          <li><a href="mailto:info.peakfunctionalfitness@gmail.com"><b>Email</b><span>info.peakfunctionalfitness@gmail.com</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <form id="form" novalidate>
+          <div class="campo"><label for="nome">Nome e cognome</label><input id="nome" type="text" required placeholder="Mario Rossi" autocomplete="name"></div>
+          <div class="campo"><label for="tel">Telefono</label><input id="tel" type="tel" required placeholder="333 1234567" autocomplete="tel"></div>
+          <div class="campo"><label for="mail">Email <span class="opt">(facoltativa)</span></label><input id="mail" type="email" placeholder="mario@esempio.it" autocomplete="email"></div>
+          <div class="campo"><label for="int">Cosa ti interessa</label>
+            <select id="int" required>
+              <option value="">Scegli un'opzione</option>
+              <option>Lezione di prova gratuita</option>
+              <option>Primo mese — 50€</option>
+              <option>Trimestrale — 230€</option>
+              <option>Semestrale — 420€</option>
+              <option>Voglio solo saperne di più</option>
+            </select>
+          </div>
+          <button class="btn btn-pieno" id="send" type="submit">Mandaci il contatto</button>
+        </form>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+        <p class="privacy">Usiamo i tuoi dati solo per ricontattarti su PEAK. Niente newsletter, niente giri strani.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="/logo.webp" width="120" height="40" alt="PEAK Functional Fitness" loading="lazy">
+      <p>PEAK Functional Fitness A.S.D.<br>Via Enrico Mattei 18 · 31010 Maser (TV)<br>C.F. e P.IVA 05641970263</p>
+    </div>
+    <p><a href="tel:+393937652236">+39 393 765 2236</a><br><a href="mailto:info.peakfunctionalfitness@gmail.com">info.peakfunctionalfitness@gmail.com</a></p>
+  </div>
+</footer>
+
+<div class="barra" id="barra"><a class="btn btn-pieno" href="#prova">Prova gratis una lezione</a></div>
+
+<script>
+/* ---------- Orari ---------- */
+const ORARI = [
+  { g: 'Lunedì',    c: ['6:30', '12:45', '17:30', '18:30', '19:30'], ob: ['8:00 – 14:00', '17:00 – 21:00'] },
+  { g: 'Martedì',   c: ['12:45', '17:30', '18:30', '19:30'],         ob: ['8:00 – 14:00', '17:00 – 21:00'] },
+  { g: 'Mercoledì', c: ['6:30', '12:45', '17:30', '18:30', '19:30'], ob: ['8:00 – 14:00', '17:00 – 21:00'] },
+  { g: 'Giovedì',   c: ['12:45', '17:30', '18:30', '19:30'],         ob: ['8:00 – 14:00', '17:00 – 21:00'] },
+  { g: 'Venerdì',   c: ['6:30', '12:45', '17:30', '18:30', '19:30'], ob: ['8:00 – 14:00', '17:00 – 21:00'] },
+  { g: 'Sabato',    c: ['10:30', '11:30'],                           ob: ['10:00 – 13:00'] },
+];
+const oggi = (new Date().getDay() + 6) % 7;         // 0 = lunedì, 6 = domenica
+const iniziale = oggi === 6 ? 0 : oggi;
+const tab = document.getElementById('tabella');
+const tasti = document.getElementById('giorni');
+ORARI.forEach((d, i) => {
+  const col = document.createElement('div');
+  col.className = 'giorno' + (i === oggi ? ' oggi' : '') + (i === iniziale ? ' attivo' : '');
+  col.id = 'g' + i; col.setAttribute('role', 'tabpanel'); col.setAttribute('aria-label', d.g);
+  col.innerHTML = '<h3>' + d.g.slice(0, 3) + (i === oggi ? ' <span class="oggi-tag">oggi</span>' : '') + '</h3>'
+    + d.c.map(o => '<div class="slot"><b>' + o + '</b><span>Classe</span></div>').join('')
+    + '<div class="slot ob"><b>' + d.ob.join('<br>') + '</b><span>Open box</span></div>';
+  tab.appendChild(col);
+  const b = document.createElement('button');
+  b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', 'g' + i);
+  b.setAttribute('aria-selected', i === iniziale ? 'true' : 'false');
+  b.textContent = i === oggi ? 'Oggi' : d.g.slice(0, 3);
+  b.addEventListener('click', () => {
+    tasti.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', 'false'));
+    tab.querySelectorAll('.giorno').forEach(x => x.classList.remove('attivo'));
+    b.setAttribute('aria-selected', 'true'); col.classList.add('attivo');
+  });
+  tasti.appendChild(b);
+});
+
+/* ---------- Menu e barra ---------- */
+const menu = document.getElementById('menu');
+const barra = document.getElementById('barra');
+const prova = document.getElementById('prova');
+let provaVisibile = false;
+new IntersectionObserver(([e]) => { provaVisibile = e.isIntersecting; aggiorna(); }).observe(prova);
+function aggiorna() {
+  const y = window.scrollY;
+  menu.classList.toggle('pieno', y > 40);
+  barra.classList.toggle('su', y > window.innerHeight * 0.8 && !provaVisibile);
+}
+addEventListener('scroll', aggiorna, { passive: true }); aggiorna();
+
+/* ---------- Form ---------- */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbz5nR9sMoN-Pa-89NCQctzfo0P9VRC5cOrwhui3OZPTfUYCd9fI7dnSjBB47ks0sit17w/exec";
+const $ = id => document.getElementById(id);
+const msg = $('msg'), btn = $('send');
+const show = (t, k) => { msg.textContent = t; msg.className = 'msg ' + (k || ''); };
+const ERRORE_INVIO = 'Non siamo riusciti a salvare il contatto. Riprova tra poco o <a href="https://wa.me/393937652236" target="_blank" rel="noopener">scrivici su WhatsApp</a>.';
+$('form').addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  const dati = { nome: $('nome').value.trim(), telefono: $('tel').value.trim(), email: $('mail').value.trim(), interesse: $('int').value, data: new Date().toLocaleString('it-IT') };
+  const errore = (t, id) => { show(t, 'err'); $(id).focus(); };
+  const cifre = dati.telefono.replace(/\D/g, '');
+  if (!dati.nome) return errore('Manca il nome.', 'nome');
+  if (!dati.telefono) return errore('Manca il telefono.', 'tel');
+  if (cifre.length < 8 || cifre.length > 13) return errore('Controlla il numero di telefono.', 'tel');
+  if (dati.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(dati.email)) return errore("Controlla l'email.", 'mail');
+  if (!dati.interesse) return errore('Scegli cosa ti interessa.', 'int');
+  btn.disabled = true; show('Invio…');
+  const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 15000);
+  try {
+    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(dati), signal: ctrl.signal });
+    const testo = (await res.text()).trim();
+    let salvato = testo === 'ok';
+    try { salvato = salvato || JSON.parse(testo).ok === true; } catch (_) {}
+    if (!res.ok || !salvato) throw new Error('non salvato');
+    show('Ricevuto. Ti richiamiamo presto.', 'ok'); $('form').reset();
+  } catch (e) { show('', 'err'); msg.innerHTML = ERRORE_INVIO; }
+  finally { clearTimeout(timer); btn.disabled = false; }
+});
+</script>
+</body>
+</html>
