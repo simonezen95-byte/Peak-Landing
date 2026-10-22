@@ -38,7 +38,7 @@ a{color:inherit}
 h2.titolo{font-size:clamp(34px,8.5vw,64px)}
 .lead{font-size:clamp(17px,2.2vw,20px);color:var(--secondario);max-width:34em;line-height:1.55}
 section{scroll-margin-top:72px}
-.foto{filter:grayscale(1) contrast(1.08) brightness(.92);object-fit:cover;width:100%;height:100%}
+.foto{object-fit:cover;width:100%;height:100%}
 
 /* ---------- BOTTONI ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .2s ease-out,border-color .2s ease-out,transform .15s ease-out}
@@ -62,12 +62,12 @@ section{scroll-margin-top:72px}
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .hero .strato{position:absolute;inset:0;z-index:-2}
 .hero .strato img{object-position:62% center}
-.hero .scuro{filter:grayscale(1) brightness(.32) contrast(1.1)}
+.hero .scuro{filter:brightness(.34) saturate(.85)}
 .hero{--w:min(118vw,520px);--h:calc(var(--w) * 150 / 214);--l:calc(50% - var(--w) * .5);--y:calc(var(--h) + 76px)}
 @media (min-width:900px){.hero{--w:min(150vw,1500px);--l:calc(50% - var(--w) * .18);--y:100%}}
 .hero .finestra{position:absolute;inset:0;z-index:-1;
   clip-path:polygon(calc(var(--l) + var(--w) * .5) calc(var(--y) - var(--h)),calc(var(--l) + var(--w) * .998) var(--y),calc(var(--l) + var(--w) * .806) var(--y),calc(var(--l) + var(--w) * .5) calc(var(--y) - var(--h) * .615),calc(var(--l) + var(--w) * .194) var(--y),calc(var(--l) + var(--w) * .002) var(--y))}
-.hero .finestra img{width:100%;height:100%;object-fit:cover;object-position:62% center;filter:grayscale(1) contrast(1.12) brightness(1.02)}
+.hero .finestra img{width:100%;height:100%;object-fit:cover;object-position:62% center;filter:saturate(1.08) contrast(1.04)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.55) 32%,rgba(10,10,10,0) 60%)}
 .hero .wrap{width:100%;padding-bottom:clamp(40px,8vh,88px);padding-top:120px}
 .hero h1{font-size:clamp(46px,12.5vw,128px)}
