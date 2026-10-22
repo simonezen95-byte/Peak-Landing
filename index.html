@@ -3,8 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PEAK Functional Fitness — Maser (TV)</title>
-<meta name="description" content="Functional fitness a Maser. Apertura inverno 2026. Founding membership: 30 posti.">
+<script>
+/* ============================================================
+   FASE DEL SITO
+   'pre'    = prima dell'apertura (founding membership)
+   'aperto' = dal giorno dell'apertura (prova gratuita e listino)
+   Anteprima dell'altra fase senza cambiare niente:
+   peakfunctionalfitness.it/?fase=aperto
+   Al passaggio ad 'aperto' aggiornare anche description e og:description qui sotto.
+   ============================================================ */
+const FASE = 'pre';
+(function () {
+  var f = FASE;
+  try { var q = new URLSearchParams(location.search).get('fase'); if (q === 'pre' || q === 'aperto') f = q; } catch (e) {}
+  document.documentElement.setAttribute('data-fase', f);
+})();
+</script>
+<title>PEAK Functional Fitness · Palestra di functional fitness a Maser (TV)</title>
+<meta name="description" content="Palestra di functional fitness a Maser (TV): classi con coach, open box e app. Apertura inverno 2026, 30 posti founding membership.">
+<!-- Fase aperto: "Palestra di functional fitness a Maser (TV): classi con coach, open box e app. Prova gratuita su prenotazione." -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"PEAK Functional Fitness","url":"https://peakfunctionalfitness.it/","image":"https://peakfunctionalfitness.it/og.jpg","telephone":"+39 393 765 2236","email":"info.peakfunctionalfitness@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Via Enrico Mattei 18","postalCode":"31010","addressLocality":"Maser","addressRegion":"TV","addressCountry":"IT"},"sameAs":["https://www.instagram.com/peakfunctionalfitness/"]}
+</script>
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:title" content="PEAK Functional Fitness">
 <meta property="og:description" content="Apriamo a Maser nell'inverno 2026. 30 posti founding membership.">
@@ -155,6 +175,32 @@ p.stay{
 .after p{font-size:13.5px;color:var(--n400);line-height:1.55}
 .after b{color:var(--n200);font-weight:600}
 
+/* ---------- FASI ---------- */
+html[data-fase="pre"] [data-fase="aperto"],
+html[data-fase="aperto"] [data-fase="pre"]{display:none !important}
+
+/* ---------- FONDATORI ---------- */
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:20px}
+.person{background:var(--n900);border:1px solid var(--n800);border-radius:16px;padding:18px}
+.person b{display:block;font-family:'Barlow',sans-serif;font-weight:800;font-size:17px;color:var(--n50);text-transform:uppercase;letter-spacing:.03em}
+.person span{display:block;font-size:12.5px;color:var(--n400);margin-top:4px;line-height:1.45}
+
+/* ---------- FAQ ---------- */
+.faq details{border-top:1px solid var(--n800)}
+.faq details:last-child{border-bottom:1px solid var(--n800)}
+.faq summary{
+  list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:17px 0;font-weight:600;font-size:15px;color:var(--n50);line-height:1.4;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:focus-visible{outline:2px solid var(--n500);outline-offset:4px;border-radius:4px}
+.faq summary i{flex:none;width:14px;height:14px;position:relative;color:var(--n500)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s ease-out}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i::after{transform:rotate(0)}
+.faq details p{color:var(--n300);font-size:14.5px;padding:0 30px 18px 0}
+@media (hover:hover){.faq summary:hover i{color:var(--n300)}}
+
 /* ---------- FORM ---------- */
 .field{margin-bottom:14px}
 label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--n500);margin-bottom:7px}
@@ -279,8 +325,11 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
     <img src="/logo.webp" width="190" height="63" fetchpriority="high" alt="PEAK Functional Fitness">
     <h1 class="display">Il tuo allenamento<br>dura un'ora.<br>PEAK no.</h1>
     <p>Functional fitness a Maser</p>
-    <div class="when">Opening Winter 2026</div><br>
-    <a class="cta" href="#prenota">Prenota il tuo posto</a>
+    <div data-fase="pre">
+      <div class="when">Opening Winter 2026</div><br>
+      <a class="cta" href="#prenota">Prenota il tuo posto</a>
+    </div>
+    <a class="cta" href="#prenota" data-fase="aperto">Prova gratis una lezione</a>
   </header>
 
   <div class="divider"></div>
@@ -292,9 +341,10 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
     </div>
     <div class="sb">
     <p class="body">PEAK nasce per allenarsi bene, stare insieme e sentirsi parte di qualcosa.</p>
-    <p class="body">Ci saranno workout, classi e obiettivi da raggiungere. Ma anche persone, serate, eventi e momenti da condividere fuori dall'allenamento.</p>
+    <p class="body" data-fase="pre">Ci saranno workout, classi e obiettivi da raggiungere. Ma anche persone, serate, eventi e momenti da condividere fuori dall'allenamento.</p>
+    <p class="body" data-fase="aperto">Ci sono workout, classi e obiettivi da raggiungere. Ma anche persone, serate, eventi e momenti da condividere fuori dall'allenamento.</p>
     <p class="body">Un posto dove vieni volentieri. Per allenarti, ma non solo.</p>
-    <p class="stay">STAY TUNED</p>
+    <p class="stay" data-fase="pre">STAY TUNED</p>
     </div>
   </section>
 
@@ -343,13 +393,16 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
 
   <section>
     <div class="sh">
-    <div class="eyebrow">In arrivo</div>
-    <h2>L'app PEAK</h2>
+    <div class="eyebrow">Chi siamo</div>
+    <h2>I fondatori</h2>
     </div>
     <div class="sb">
-    <div class="appbox">
-      <p class="body">Stiamo costruendo la nostra app. Prenoti classi e open box, registri i tuoi risultati, tieni traccia dei progressi e vedi chi si allena con te.</p>
-      <p class="body">Niente da scaricare dagli store: la apri dal telefono e la aggiungi alla home. Sar&agrave; pronta per l'apertura.</p>
+    <p class="body">Quattro soci, ruoli diversi. Due coach in sala, un fisioterapista e chi tiene in ordine gestione e amministrazione.</p>
+    <div class="team">
+      <div class="person"><b>Simone</b><span>Coach</span></div>
+      <div class="person"><b>Giulio</b><span>Coach</span></div>
+      <div class="person"><b>Alberto</b><span>Fisioterapista</span></div>
+      <div class="person"><b>Filippo</b><span>Gestione e amministrazione</span></div>
     </div>
     </div>
   </section>
@@ -357,6 +410,28 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
   <div class="divider"></div>
 
   <section>
+    <div class="sh">
+    <div class="eyebrow" data-fase="pre">In arrivo</div>
+    <div class="eyebrow" data-fase="aperto">Sempre con te</div>
+    <h2>L'app PEAK</h2>
+    </div>
+    <div class="sb">
+    <div class="appbox">
+      <div data-fase="pre">
+      <p class="body">Stiamo costruendo la nostra app. Prenoti classi e open box, registri i tuoi risultati, tieni traccia dei progressi e vedi chi si allena con te.</p>
+      <p class="body">Niente da scaricare dagli store: la apri dal telefono e la aggiungi alla home. Sar&agrave; pronta per l'apertura.</p>
+      </div>
+      <div data-fase="aperto">
+      <p class="body">Prenoti classi e open box, registri i tuoi risultati, tieni traccia dei progressi e vedi chi si allena con te.</p>
+      <p class="body">Niente da scaricare dagli store: la apri dal telefono e la aggiungi alla home. L'accesso te lo diamo all'iscrizione.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section data-fase="pre">
     <div class="sh">
     <div class="eyebrow">Offerta di lancio</div>
     <h2>Founding membership</h2>
@@ -401,8 +476,89 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
     </div>
 
     <div class="after">
-      <p><b>Non vuoi decidere adesso?</b> Dall'apertura il primo mese di prova costa 50&euro;. Ma i posti founding finiscono prima, e a quel prezzo non tornano.</p>
+      <p><b>Non vuoi decidere adesso?</b> Dall'apertura puoi provare gratis una lezione, e il primo mese costa 50&euro;. Ma i posti founding finiscono prima, e a quel prezzo non tornano.</p>
     </div>
+    </div>
+  </section>
+
+  <section data-fase="aperto">
+    <div class="sh">
+    <div class="eyebrow">Prezzi</div>
+    <h2>Abbonamenti</h2>
+    </div>
+    <div class="sb">
+    <p class="body" style="margin-bottom:20px">Prima di scegliere, vieni a provare. La prima lezione &egrave; gratuita, con un coach e senza impegno.</p>
+
+    <div class="tier hl">
+      <div>
+        <div class="tier-name">Lezione di prova</div>
+        <div class="tier-note">Una classe con un coach</div>
+      </div>
+      <div class="tier-price"><b>Gratis</b></div>
+    </div>
+
+    <div class="tier">
+      <div>
+        <div class="tier-name">Primo mese</div>
+        <div class="tier-note">Un mese intero per capire se fa per te</div>
+      </div>
+      <div class="tier-price"><b>50&euro;</b></div>
+    </div>
+
+    <div class="tier">
+      <div>
+        <div class="tier-name">Trimestrale</div>
+        <div class="tier-note">Tre mesi</div>
+      </div>
+      <div class="tier-price"><b>230&euro;</b><span>76,67&euro; / mese</span></div>
+    </div>
+
+    <div class="tier">
+      <div>
+        <div class="tier-name">Semestrale</div>
+        <div class="tier-note">Sei mesi</div>
+      </div>
+      <div class="tier-price"><b>420&euro;</b><span>70&euro; / mese</span></div>
+    </div>
+
+    <div class="after">
+      <p><b>Sei un founding member?</b> Il tuo prezzo resta quello, anche al rinnovo.</p>
+    </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="sh">
+    <div class="eyebrow">Domande frequenti</div>
+    <h2>Prima di iniziare</h2>
+    </div>
+    <div class="sb faq">
+      <details>
+        <summary>Non mi sono mai allenato. Posso iniziare?<i></i></summary>
+        <p>S&igrave;. Ogni workout si adatta al tuo livello: carichi, movimenti e volumi li sceglie il coach insieme a te. Si parte dalla tecnica, il resto arriva.</p>
+      </details>
+      <details>
+        <summary>Ho un infortunio o un dolore. Posso venire?<i></i></summary>
+        <p>Parlane con noi prima di iniziare. Tra i fondatori c'&egrave; un fisioterapista: sappiamo adattare il lavoro a quello che puoi fare oggi. Per un problema in corso serve prima il parere del tuo medico.</p>
+      </details>
+      <details>
+        <summary>Che differenza c'&egrave; tra classe e open box?<i></i></summary>
+        <p>In classe ti alleni in gruppo, con un coach e il workout del giorno. In open box usi la sala in autonomia, con il tuo programma.</p>
+      </details>
+      <details>
+        <summary>Quante volte a settimana?<i></i></summary>
+        <p>Per iniziare bastano due o tre classi. Poi aumenti quando il corpo &egrave; pronto, non prima.</p>
+      </details>
+      <details>
+        <summary>Cosa serve per iscriversi?<i></i></summary>
+        <p>Il certificato medico per attivit&agrave; sportiva non agonistica. Per allenarti: abbigliamento comodo, scarpe da allenamento e una borraccia.</p>
+      </details>
+      <details>
+        <summary>Come prenoto le classi?<i></i></summary>
+        <p>Dall'app PEAK. Vedi i posti liberi, prenoti e disdici dal telefono. Niente telefonate, niente liste.</p>
+      </details>
     </div>
   </section>
 
@@ -410,11 +566,14 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
 
   <section id="prenota">
     <div class="sh">
-    <div class="eyebrow">Prenota il tuo posto</div>
-    <h2>Voglio esserci</h2>
+    <div class="eyebrow" data-fase="pre">Prenota il tuo posto</div>
+    <h2 data-fase="pre">Voglio esserci</h2>
+    <div class="eyebrow" data-fase="aperto">Vieni a provare</div>
+    <h2 data-fase="aperto">Prova gratuita</h2>
     </div>
     <div class="sb">
-    <p class="body" style="margin-bottom:22px">Lasciaci un contatto: ti richiamiamo noi per confermare il posto e completare l'iscrizione.</p>
+    <p class="body" style="margin-bottom:22px" data-fase="pre">Lasciaci un contatto: ti richiamiamo noi per confermare il posto e completare l'iscrizione.</p>
+    <p class="body" style="margin-bottom:22px" data-fase="aperto">Lasciaci un contatto: ti richiamiamo noi per fissare la lezione di prova.</p>
 
     <form id="form" novalidate>
     <div class="field">
@@ -433,11 +592,6 @@ footer a{color:var(--n300);text-decoration:none;text-underline-offset:3px}
       <label for="int">Cosa ti interessa</label>
       <select id="int" required>
         <option value="">Scegli un'opzione</option>
-        <option>Founding trimestrale — 210&euro;</option>
-        <option>Founding semestrale — 390&euro;</option>
-        <option>Founding annuale — 720&euro;</option>
-        <option>Mese di prova a 50&euro;</option>
-        <option>Voglio solo saperne di pi&ugrave;</option>
       </select>
     </div>
 
@@ -513,6 +667,28 @@ const POSTI_PRESI = 0;
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbz5nR9sMoN-Pa-89NCQctzfo0P9VRC5cOrwhui3OZPTfUYCd9fI7dnSjBB47ks0sit17w/exec";
 
 /* ============================================================ */
+
+// Voci del menu "Cosa ti interessa" per ciascuna fase
+const OPZIONI = {
+  pre: [
+    'Founding trimestrale — 210€',
+    'Founding semestrale — 390€',
+    'Founding annuale — 720€',
+    "Lezione di prova gratuita (dall'apertura)",
+    'Voglio solo saperne di più'
+  ],
+  aperto: [
+    'Lezione di prova gratuita',
+    'Primo mese — 50€',
+    'Trimestrale — 230€',
+    'Semestrale — 420€',
+    'Voglio solo saperne di più'
+  ]
+};
+
+const FASE_ATTIVA = document.documentElement.getAttribute('data-fase') || 'pre';
+const sel = document.getElementById('int');
+OPZIONI[FASE_ATTIVA].forEach(t => sel.add(new Option(t, t)));
 
 const TOT = 30;
 const rimasti = Math.max(0, TOT - POSTI_PRESI);
